@@ -1,7 +1,7 @@
 # Diplom
 # Дипломный проект: Автоматизация тестирования сайта YouGile API и UI
 Описание проекта
-Проект по автоматизации тестирования социальной сети VK с использованием:
+Проект по автоматизации тестирования сайта YouGile с использованием:
 Python — язык программирования;
 PyTest — фреймворк для тестирования;
 Selenium WebDriver — для UI‑тестов;
@@ -59,6 +59,13 @@ GitHub репозиторий:
     │   ├── __init__.py
     │   ├── UI_YGP.py           # Page Object для UI тестов
     │   └── API_YGP.py          # Page Object для API тестов
+    ├── report/
+    │   ├── Отчет.md
+    │   └── attachments/
+    │       ├── allure/         # Скриншоты/фрагменты отчёта Allure
+    │       ├── bugs/           # Скриншоты багов                 
+    │       ├── postman/        # Коллекция и результаты прогонов API
+    │       └── testit/         # Данные из TestIT (скриншоты кейсов, чек-листов, прогоны)
     ├── screenshots/            # Папка для скриншотов
     ├── tests/
     │   ├── __init__.py
@@ -73,37 +80,39 @@ GitHub репозиторий:
 
 # Что автоматизировано
 ## API‑тесты (11 тестов):
-    test_get_id_company                        # запрос id компании
-    test_get_id_company_negative_aut           # запрос id компании с некорректными данными пользователя (негативный)
-    test_create_new_project                    # создание нового проекта
-    test_create_duble_project_negative         # создание дубля проекта (негативный)
-    test_create_new_project_negative_user_id   # создание нового проекта с невалидным id пользователя (негативный)
-    test_rename_project                        # переименование проекта
-    test_rename_project_negative_id_key        # переименование проекта с невалидным api-ключом (негативный) 
-    test_get_project_on_id                     # запрос проекта по id 
-    test_delete_project_id                     # удаление проекта по id 
-    test_delete_on_project_id_negative         # удаление проекта по некорректному id (негативный)
-    test_get_all_projects                      # запрос списка проектов
+    test_get_id_company                        # Запрос id компании
+    test_get_id_company_negative_aut           # Запрос id компании с некорректными данными пользователя (негативный1)
+    test_create_new_project                    # Создание нового проекта
+    test_create_duble_project_negative         # Создание дубля проекта (негативный2)
+    test_create_new_project_negative_user_id   # Создание нового проекта с невалидным id пользователя (негативный3)
+    test_rename_project                        # Переименование проекта
+    test_rename_project_negative_id_key        # Переименование проекта с невалидным api-ключом (негативный4) 
+    test_get_project_on_id                     # Запрос проекта по id 
+    test_delete_project_id                     # Удаление проекта по id 
+    test_delete_on_project_id_negative         # Удаление проекта по некорректному id (негативный5)
+    test_get_all_projects                      # Запрос списка проектов
 
-## UI‑тесты (0 тестов):
-          
-
-
-
-
-
-
-
-
+## UI‑тесты (11 тестов):
+    test_aut                                   # Авторизация
+    test_aut_negative                          # Авторизация с невалидными данными (негативный1)
+    test_company_present                       # Смок1 - Открытие и просмотр опции "Моя компания"
+    test_messenger_present                     # Смок2 - Открытие и просмотр опции "Мессенджер"
+    test_event_present                         # Смок3 - Открытие и просмотр опции "Лента событий"
+    test_created_project                       # Создание проекта
+    test_created_project_negative              # Создание проекта с пустым названием (негативный2)
+    test_add_board_in_project                  # Создание доски в проекте
+    test_add_board_in_project_negative         # Создание доски с пустым названием (негативный3)
+    test_add_column_in_board                   # Создание колонки на доске проекта
+    test_add_task_in_column                    # Создание колонки и задачи на доске проекта
 
 
 # Настройка переменных окружения
-**Перед запуском заполните необходимые значения:**  
-  - Скопируйте .env.example в .env
+**Перед запуском тестов заполните необходимые значения:**  
+  - Скопируйте данные .env.example в .env
   - LOG - подставьте свой e-mail, используемый для регистрации на сайте
   - PASS - подставьте свой пароль
-  - Поиск API_KEY, USER и ID_COMPANI:
-   
+
+  - Поиск API_KEY, USER и ID_COMPANI для API‑тестов:
     - Откройте папку Helpers
     - Откройте файл **get_api_key.py**
     - Раскомментируйте код
@@ -112,6 +121,7 @@ GitHub репозиторий:
     - Верните код в исходное состояние (закомментируйте)
 Пример:
 ![img.png](img.png)
+
 
 # Команды для запуска тестов
 * Все тесты (UI + API)
@@ -143,7 +153,6 @@ GitHub репозиторий:
 ## Результаты выполнения тестов
 
 ### API‑тесты
-
  - `tests/test_api_yg.py::test_get_id_company` — **PASSED**
  - `tests/test_api_yg.py::test_get_id_company_negative_aut` — **PASSED**
  - `tests/test_api_yg.py::test_create_new_project` — **PASSED**
@@ -156,33 +165,32 @@ GitHub репозиторий:
  - `tests/test_api_yg.py::test_delete_on_project_id_negative` — **PASSED**
  - `tests/test_api_yg.py::test_get_all_projects` — **PASSED**
 
-
 ### UI‑тесты
+ - `tests/test_ui_yg.py::test_aut` — **PASSED**
+ - `tests/test_ui_yg.py::test_aut_negative` — **PASSED**
+ - `tests/test_ui_yg.py::test_company_present` — **PASSED**
+ - `tests/test_ui_yg.py::test_messenger_present` — **PASSED**
+ - `tests/test_ui_yg.py::test_event_present` — **PASSED**
+ - `tests/test_ui_yg.py::test_created_project` — **PASSED**
+ - `tests/test_ui_yg.py::test_created_project_negative` — **PASSED**
+ - `tests/test_ui_yg.py::test_add_board_in_project` — **PASSED**
+ - `tests/test_ui_yg.py::test_add_board_in_project_negative` — **PASSED**
+ - `tests/test_ui_yg.py::test_add_column_in_board` — **PASSED**
+ - `tests/test_ui_yg.py::test_add_task_in_column_and_task` — **PASSED**
 
-
-
----
 
 ## Итоговая статистика
 
 | Тип тестов | Количество тестов | Успешно выполнено |
 |----------|-------------------|-------------------|
 | API‑тесты | 11                | 11 (100 %)        |
-| UI‑тесты | 0                 | 0                 |
-| **Всего** | **11**            | **11 (100 %)**    |
+| UI‑тесты | 11                | 11 (100 %)        |
+| **Всего** | **22**            | **22 (100 %)**    |
 Все тесты успешно пройдены.
 
-### Пример отчёта Allure
-
-
-
-На скриншоте видно:
-- Круговая диаграмма **STATUS** с 100% успешных тестов.
-- График **SEVERITY**, показывающий распределение по критичности.
-- Статистика по длительности выполнения (**DURATION**).
-
 ## Отчёты
- - После запуска тестов с Allure отчёт будет доступен по адресу: http://127.0.0.1:51315
+ - После запуска тестов с Allure отчёт можно просмотреть, 
+   открыв файл `attachments/allure-report/index.html` в любом браузере.
 
 ## Автор
 ### Слабодчукова Ольга Николаевна
@@ -191,7 +199,7 @@ GitHub репозиторий:
  - email: pkz2019@mail.ru
 
 ## Дата
- - 01 октября 2026 г.
+ - 22 октября 2026 г. 22:10
 
 
 

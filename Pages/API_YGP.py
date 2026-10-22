@@ -317,7 +317,7 @@ class ProjectYouGile:
             password: str,
             company_id: str) -> Tuple[int, Dict[str, Any]]:
         """
-        Авторизуется и получает API-key через POST /auth/companies.
+        Авторизуется и получает API-key через POST /auth/keys.
 
         Args:
         login (str): логин пользователя.
