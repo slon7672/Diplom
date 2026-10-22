@@ -59,13 +59,6 @@ GitHub репозиторий:
     │   ├── __init__.py
     │   ├── UI_YGP.py           # Page Object для UI тестов
     │   └── API_YGP.py          # Page Object для API тестов
-    ├── report/
-    │   ├── Отчет.md
-    │   └── attachments/
-    │       ├── allure/         # Скриншоты/фрагменты отчёта Allure
-    │       ├── bugs/           # Скриншоты багов                 
-    │       ├── postman/        # Коллекция и результаты прогонов API
-    │       └── testit/         # Данные из TestIT (скриншоты кейсов, чек-листов, прогоны)
     ├── screenshots/            # Папка для скриншотов
     ├── tests/
     │   ├── __init__.py
